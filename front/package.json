@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@tiptap/extension-placeholder": "^3.23.5",
     "@tiptap/pm": "^3.23.5",
     "@tiptap/react": "^3.23.5",
@@ -17,12 +18,13 @@
     "dompurify": "^3.4.5",
     "i18next": "^26.2.0",
     "i18next-browser-languagedetector": "^8.2.1",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hot-toast": "^2.6.0",
     "react-i18next": "^17.0.8",
     "react-router-dom": "^7.15.1",
-    "swiper": "^12.1.4"
+    "swiper": "^12.1.4",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
