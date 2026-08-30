@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 export default function FormField({
                                       name,
                                       label,
@@ -22,7 +24,29 @@ export default function FormField({
                                       max,
                                       step,
                                   }) {
-    const showError = !!error && touched
+    const showError = !!error && touched;
+
+    const inputClasses = clsx(
+        'w-full py-2 px-3 rounded-xl text-dark-brown bg-light-gray',
+        'transition-all duration-200 focus:outline-none',
+        {
+            'border-danger ring-2 ring-danger': showError,
+            'border-light-gray hover:border-gray-400': !showError,
+            'focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20': !showError,
+        },
+        disabled && 'opacity-50 cursor-not-allowed',
+        className
+    );
+
+    const errorClasses = clsx(
+        'overflow-hidden transition-all duration-200 ease-in-out',
+        {
+            'max-h-10 opacity-100 mt-1': showError,
+            'max-h-0 opacity-0 mt-0': !showError,
+        }
+    );
+
+    const { className: inputPropsClassName, ...otherInputProps } = inputProps;
 
     const baseProps = {
         id: name,
@@ -43,20 +67,9 @@ export default function FormField({
         'aria-invalid': showError ? 'true' : undefined,
         'aria-describedby': showError ? `${name}-error` : undefined,
         'aria-disabled': disabled ? 'true' : undefined,
-        className: `
-            w-full py-2 px-3 border-1 border-light-gray rounded-xl text-dark-brown bg-light-gray
-            transition-all duration-200
-            focus:outline-none
-            focus:border-blue-500
-            focus:ring-2
-            focus:ring-blue-500/20
-            hover:border-gray-400
-            ${showError ? 'border-danger ring-0 ring-danger' : ''}
-            ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-            ${className}
-        `.trim(),
-        ...inputProps,
-    }
+        className: clsx(inputClasses, inputPropsClassName),
+        ...otherInputProps,
+    };
 
     const renderInput = () => {
         switch (type) {
@@ -69,20 +82,20 @@ export default function FormField({
                             </option>
                         ))}
                     </select>
-                )
+                );
             case 'textarea':
-                return <textarea rows={rows} {...baseProps} />
+                return <textarea rows={rows} {...baseProps} />;
             default:
-                return <input type={type} {...baseProps} />
+                return <input type={type} {...baseProps} />;
         }
-    }
+    };
 
     return (
-        <div className='flex flex-col mb-4.5'>
+        <div className="flex flex-col mb-4.5">
             {label && (
                 <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
                     {label}
-                    {required && <span className='text-danger ml-1'>*</span>}
+                    {required && <span className="text-danger ml-1">*</span>}
                 </label>
             )}
 
@@ -91,11 +104,7 @@ export default function FormField({
             <div
                 id={`${name}-error`}
                 role="alert"
-                className={`
-                    overflow-hidden
-                    transition-all duration-200 ease-in-out
-                    ${showError ? 'max-h-10 opacity-100 mt-1' : 'max-h-0 opacity-0 mt-0'}
-                `}
+                className={errorClasses}
             >
                 <span className="flex items-center gap-1 text-xs text-danger">
                     <span>⚠</span>
@@ -103,5 +112,5 @@ export default function FormField({
                 </span>
             </div>
         </div>
-    )
+    );
 }
