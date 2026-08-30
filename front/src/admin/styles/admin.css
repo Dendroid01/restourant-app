@@ -322,8 +322,8 @@
 .modal-close:hover { color: var(--red-default); }
 
 /* ===== Forms (admin) ===== */
-.admin-form-group {
-    margin-bottom: 18px;
+.form-group {
+    margin-bottom: var(--spacing-md);
 }
 
 .admin-form-group label {

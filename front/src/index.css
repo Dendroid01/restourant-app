@@ -1,14 +1,23 @@
 @import "tailwindcss";
+
 @import './styles/global.css';
 
 @import './components/RestaurantCard/RestaurantCard.css';
 @import './components/RestaurantGallery/RestaurantGallery.css';
 
+@theme {
+  --color-danger: #A93226;
+
+  --color-gray-50: #FAF8F5;
+  --color-gray-300: #D1CBC3;
+  --color-gray-900: #1A1212;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
 }
+
 
 #root {
   min-height: 100vh;

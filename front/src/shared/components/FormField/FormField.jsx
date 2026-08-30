@@ -1,22 +1,3 @@
-import { applyPhoneMask } from '../../hooks/useForm'
-
-/**
- * @param {string}  name
- * @param {string}  label
- * @param {string}  type          — 'text' | 'email' | 'tel' | 'password' | 'date' | 'time' | 'number' | 'select' | 'textarea'
- * @param {*}       value
- * @param {string}  error
- * @param {boolean} touched
- * @param {fn}      onChange
- * @param {fn}      onBlur
- * @param {boolean} required
- * @param {string}  placeholder
- * @param {Array}   options       — для type='select': [{value, label}]
- * @param {number}  rows          — для textarea
- * @param {Object}  inputProps    — дополнительные props для input
- * @param {string}  className     — класс для обёртки
- * @param {boolean} adminStyle    — использовать классы admin-input или form-control
- */
 export default function FormField({
                                       name,
                                       label,
@@ -32,11 +13,16 @@ export default function FormField({
                                       rows = 3,
                                       inputProps = {},
                                       className = '',
-                                      adminStyle = false,
+                                      autoFocus = false,
+                                      disabled = false,
+                                      readOnly = false,
+                                      maxLength,
+                                      pattern,
+                                      min,
+                                      max,
+                                      step,
                                   }) {
     const showError = !!error && touched
-    const inputClass = adminStyle ? 'admin-input' : 'form-control'
-    const errorClass = adminStyle ? 'admin-field-error' : 'field-error'
 
     const baseProps = {
         id: name,
@@ -46,67 +32,75 @@ export default function FormField({
         onBlur,
         required,
         placeholder,
+        autoFocus,
+        disabled,
+        readOnly,
+        maxLength,
+        pattern,
+        min,
+        max,
+        step,
         'aria-invalid': showError ? 'true' : undefined,
         'aria-describedby': showError ? `${name}-error` : undefined,
-        style: showError
-            ? { borderColor: 'var(--state-error)', boxShadow: '0 0 0 3px rgba(169,50,38,0.1)' }
-            : undefined,
+        'aria-disabled': disabled ? 'true' : undefined,
+        className: `
+            w-full py-2 px-3 border-1 border-light-gray rounded-xl text-dark-brown bg-light-gray
+            transition-all duration-200
+            focus:outline-none
+            focus:border-blue-500
+            focus:ring-2
+            focus:ring-blue-500/20
+            hover:border-gray-400
+            ${showError ? 'border-danger ring-0 ring-danger' : ''}
+            ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
+            ${className}
+        `.trim(),
         ...inputProps,
     }
 
-    const wrapStyle = `${adminStyle ? 'admin-form-group' : 'form-group'} ${className}`
+    const renderInput = () => {
+        switch (type) {
+            case 'select':
+                return (
+                    <select {...baseProps}>
+                        {options.map((o) => (
+                            <option key={o.value} value={o.value}>
+                                {o.label}
+                            </option>
+                        ))}
+                    </select>
+                )
+            case 'textarea':
+                return <textarea rows={rows} {...baseProps} />
+            default:
+                return <input type={type} {...baseProps} />
+        }
+    }
 
     return (
-        <div className={wrapStyle}>
+        <div className='flex flex-col mb-4.5'>
             {label && (
-                <label htmlFor={name} className={adminStyle ? '' : 'form-label'}>
+                <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
                     {label}
-                    {required && <span style={{ color: 'var(--state-error)', marginLeft: 3 }}>*</span>}
+                    {required && <span className='text-danger ml-1'>*</span>}
                 </label>
             )}
 
-            {type === 'select' ? (
-                <select className={inputClass} {...baseProps}>
-                    {options.map((o) => (
-                        <option key={o.value} value={o.value}>
-                            {o.label}
-                        </option>
-                    ))}
-                </select>
-            ) : type === 'textarea' ? (
-                <textarea className={inputClass} rows={rows} {...baseProps} />
-            ) : (
-                <input
-                    type={type}
-                    className={inputClass}
-                    {...baseProps}
-                />
-            )}
+            {renderInput()}
 
-            {/* Inline-ошибка с плавным появлением */}
             <div
                 id={`${name}-error`}
                 role="alert"
-                style={{
-                    overflow: 'hidden',
-                    maxHeight: showError ? '40px' : '0',
-                    opacity: showError ? 1 : 0,
-                    transition: 'max-height 0.2s ease, opacity 0.2s ease',
-                    marginTop: showError ? 5 : 0,
-                }}
+                className={`
+                    overflow-hidden
+                    transition-all duration-200 ease-in-out
+                    ${showError ? 'max-h-10 opacity-100 mt-1' : 'max-h-0 opacity-0 mt-0'}
+                `}
             >
-        <span
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 5,
-                fontSize: 12,
-                color: 'var(--state-error)',
-            }}
-        >
-          <span>⚠</span>
-            {error}
-        </span>
+                <span className="flex items-center gap-1 text-xs text-danger">
+                    <span>⚠</span>
+                    {error}
+                </span>
             </div>
         </div>
     )
