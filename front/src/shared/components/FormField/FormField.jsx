@@ -46,7 +46,7 @@ export default function FormField({
         }
     );
 
-    const { className: inputPropsClassName, ...otherInputProps } = inputProps;
+    const {className: inputPropsClassName, ...otherInputProps} = inputProps;
 
     const baseProps = {
         id: name,
@@ -76,11 +76,15 @@ export default function FormField({
             case 'select':
                 return (
                     <select {...baseProps}>
-                        {options.map((o) => (
-                            <option key={o.value} value={o.value}>
-                                {o.label}
-                            </option>
-                        ))}
+                        {options.length === 0 ? (
+                            <option value="">{placeholder || 'Нет доступных вариантов'}</option>
+                        ) : (
+                            options.map((o) => (
+                                <option key={o.value} value={o.value}>
+                                    {o.label}
+                                </option>
+                            ))
+                        )}
                     </select>
                 );
             case 'textarea':
