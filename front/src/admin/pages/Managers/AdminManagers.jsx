@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useForm, RULES } from '../../../shared/hooks/useForm'
-import FormField from '../../../shared/components/FormField/FormField'
+import FormField from '@/shared/components/FormField/FormField.js'
 import Modal from '../../components/Modal/Modal'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
 import StatusBadge from '../../components/StatusBadge/StatusBadge'

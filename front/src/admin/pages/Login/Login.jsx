@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { useForm, RULES } from '../../../shared/hooks/useForm'
-import FormField from '@/shared/components/FormField/FormField'
+import FormField from '@/shared/components/FormField/FormField.js'
 import { useState } from 'react'
 import '../../styles/admin.css'
 

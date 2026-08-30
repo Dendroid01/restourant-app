@@ -1,4 +1,43 @@
 import clsx from 'clsx';
+import {
+    ChangeEvent,
+    FocusEvent,
+    InputHTMLAttributes,
+    TextareaHTMLAttributes,
+    SelectHTMLAttributes
+} from 'react';
+
+interface SelectOption {
+    value: string;
+    label: string;
+}
+
+interface FormFieldProps {
+    name: string;
+    label?: string;
+    type?: 'text' | 'email' | 'password' | 'tel' | 'number' | 'date' | 'select' | 'textarea';
+    value: string | number;
+    error?: string;
+    touched?: boolean;
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+    onBlur: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+    required?: boolean;
+    placeholder?: string;
+    options?: SelectOption[];
+    rows?: number;
+    inputProps?: InputHTMLAttributes<HTMLInputElement> &
+        TextareaHTMLAttributes<HTMLTextAreaElement> &
+        SelectHTMLAttributes<HTMLSelectElement>;
+    className?: string;
+    autoFocus?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+    maxLength?: number;
+    pattern?: string;
+    min?: number | string;
+    max?: number | string;
+    step?: number | string;
+}
 
 export default function FormField({
                                       name,
@@ -9,7 +48,7 @@ export default function FormField({
                                       touched,
                                       onChange,
                                       onBlur,
-                                      required,
+                                      required = false,
                                       placeholder,
                                       options = [],
                                       rows = 3,
@@ -23,16 +62,17 @@ export default function FormField({
                                       min,
                                       max,
                                       step,
-                                  }) {
+                                  }: FormFieldProps) {
     const showError = !!error && touched;
 
     const inputClasses = clsx(
         'w-full py-2 px-3 rounded-xl text-dark-brown bg-light-gray',
         'transition-all duration-200 focus:outline-none',
+        'border-1 border-light-gray hover:border-gray-400',
+        'focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20',
         {
-            'border-danger ring-2 ring-danger': showError,
-            'border-light-gray hover:border-gray-400': !showError,
-            'focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20': !showError,
+            'border-danger ring-1 ring-danger': showError,
+            'focus:border-danger focus:ring-1 focus:ring-danger': showError,
         },
         disabled && 'opacity-50 cursor-not-allowed',
         className
@@ -64,19 +104,20 @@ export default function FormField({
         min,
         max,
         step,
-        'aria-invalid': showError ? 'true' : undefined,
+        'aria-invalid': showError ? ('true' as const) : undefined,
+        'aria-disabled': disabled || undefined,
         'aria-describedby': showError ? `${name}-error` : undefined,
-        'aria-disabled': disabled ? 'true' : undefined,
         className: clsx(inputClasses, inputPropsClassName),
         ...otherInputProps,
     };
 
     const renderInput = () => {
         switch (type) {
-            case 'select':
+            case 'select': {
+                const isEmpty = options.length === 0;
                 return (
                     <select {...baseProps}>
-                        {options.length === 0 ? (
+                        {isEmpty ? (
                             <option value="">{placeholder || 'Нет доступных вариантов'}</option>
                         ) : (
                             options.map((o) => (
@@ -87,6 +128,7 @@ export default function FormField({
                         )}
                     </select>
                 );
+            }
             case 'textarea':
                 return <textarea rows={rows} {...baseProps} />;
             default:

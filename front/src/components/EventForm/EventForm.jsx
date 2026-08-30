@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useForm, RULES } from '../../shared/hooks/useForm'
-import FormField from '../../shared/components/FormField/FormField'
+import FormField from '@/shared/components/FormField/FormField.js'
 import { publicApi } from '../../api/client'
 
 const minDate = (() => {

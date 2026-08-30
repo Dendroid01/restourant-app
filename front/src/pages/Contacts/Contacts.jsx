@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useForm, RULES } from '../../shared/hooks/useForm'
-import FormField from '../../shared/components/FormField/FormField'
+import FormField from '@/shared/components/FormField/FormField.js'
 import { useToast } from '../../shared/hooks/useToast'
 import { publicContacts } from '../../api/public'
 
