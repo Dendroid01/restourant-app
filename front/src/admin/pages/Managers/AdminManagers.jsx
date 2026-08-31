@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/AuthContext.js'
 import { useForm, RULES } from '../../../shared/hooks/useForm'
 import FormField from '@/shared/components/FormField/FormField.js'
 import Modal from '../../components/Modal/Modal'

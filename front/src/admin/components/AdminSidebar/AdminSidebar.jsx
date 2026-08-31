@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/AuthContext.js'
 
 const NAV = [
     { to: '/admin',             icon: '📊', label: 'Дашборд',   permission: null },
