@@ -2,6 +2,7 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {loginSchema, LoginFormData} from '@/admin/schemas/loginSchema'
 import FormField from '@/shared/components/FormField/FormField'
+import ButtonPrimary from '@/shared/components/Buttons/ButtonPrimary'
 import {useAuth} from '../../context/AuthContext'
 import {useNavigate, useLocation} from 'react-router-dom'
 import {useState} from 'react'
@@ -20,8 +21,7 @@ export default function Login() {
         watch,
         formState: {errors, isSubmitting, touchedFields},
     } = useForm<LoginFormData>({
-        resolver: zodResolver(loginSchema),
-        defaultValues: {email: 'admin@example.com', password: 'qwerty123!'},
+        resolver: zodResolver(loginSchema)
     })
 
     const onSubmit = async (data: LoginFormData) => {
@@ -38,24 +38,22 @@ export default function Login() {
 
     return (
         <div className="flex flex-col md:p-6 min-h-screen items-center justify-center bg-color-gray-50">
-            <div className="bg-white rounded-3xl shadow-md w-full lg:max-w-[720px] 2xl:max-w-[800px] px-[36px] py-[40px]">
-                <div className="login-logo font-serif text-xl md:text-3xl lg:text-5xl text-center text-gold">✦ RESTAURANT ADMIN</div>
-                <h1 style={{
-                    fontFamily: 'Georgia, serif',
-                    fontSize: 26,
-                    fontWeight: 400,
-                    textAlign: 'center',
-                    marginBottom: 8
-                }}>
+            <div
+                className="bg-white rounded-3xl shadow-md w-full lg:max-w-[720px] 2xl:max-w-[800px] px-[36px] py-[40px]">
+                <div className="font-serif text-xl md:text-5xl text-center text-gold mb-4">✦ RESTAURANT ADMIN</div>
+                <h1 className="font-serif text-center text-2xl font-normal">
                     Вход в панель
                 </h1>
-                <p style={{textAlign: 'center', fontSize: 14, color: 'var(--text-secondary)', marginBottom: 28}}>
+                <p className="text-center text-sm mb-6 text-gray-500">
                     Введите email и пароль
                 </p>
 
-                {serverError && <div className="login-error">⚠️ {serverError}</div>}
+                {serverError && <div
+                    className="bg-brown-100 border border-brown-200 text-base font-bold text-danger rounded-xl px-4 py-3 mb-4">
+                    ⚠️ {serverError}
+                </div>}
 
-                <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)} noValidate>
                     <FormField
                         label="Email"
                         type="email"
@@ -78,14 +76,12 @@ export default function Login() {
                         error={errors.password?.message}
                         touched={touchedFields.password}
                     />
-                    <button
-                        type="submit"
-                        className="btn-admin btn-admin-primary"
-                        style={{width: '100%', marginTop: 8, padding: '12px 24px', fontSize: 15}}
-                        disabled={isSubmitting}
+                    <ButtonPrimary
+                        isSubmitting={isSubmitting}
+                        loadingText="Входим..."
                     >
-                        {isSubmitting ? 'Входим...' : 'Войти в систему'}
-                    </button>
+                        Войти в систему
+                    </ButtonPrimary>
                 </form>
             </div>
         </div>

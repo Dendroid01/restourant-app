@@ -12,6 +12,9 @@
   --color-gray-300: #D1CBC3;
   --color-gray-900: #1A1212;
 
+  --color-brown-50: #5A4A42;
+  --color-brown-100: rgba(169,50,38,0.08);
+  --color-brown-200: rgba(169,50,38,0.2);
   --color-gold: #C9A84C;
 }
 
