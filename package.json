@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "axios": "^1.20.0",
+    "react-hook-form": "^7.87.0",
+    "react-query": "^3.39.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/react-query": "^1.2.8"
+  }
+}
