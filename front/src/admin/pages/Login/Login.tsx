@@ -39,7 +39,7 @@ export default function Login() {
     return (
         <div className="flex flex-col md:p-6 min-h-screen items-center justify-center bg-color-gray-50">
             <div
-                className="bg-white rounded-3xl shadow-md w-full lg:max-w-[720px] 2xl:max-w-[800px] px-[36px] py-[40px]">
+                className="bg-white rounded-3xl shadow-md w-full lg:max-w-180 2xl:max-w-200 px-9 py-10">
                 <div className="font-serif text-xl md:text-5xl text-center text-gold mb-4">✦ RESTAURANT ADMIN</div>
                 <h1 className="font-serif text-center text-2xl font-normal">
                     Вход в панель

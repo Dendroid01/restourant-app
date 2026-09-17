@@ -8,7 +8,11 @@
 @theme {
   --color-danger: #A93226;
 
+  --color-red:#C0392B;
+
+  --color-gray-disabled: #E8E4DD;
   --color-gray-50: #FAF8F5;
+  --color-gray-200: #8A8278;
   --color-gray-300: #D1CBC3;
   --color-gray-900: #1A1212;
 

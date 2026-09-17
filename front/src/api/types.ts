@@ -4,6 +4,7 @@ export interface User {
     email: string
     role?: string
     is_admin?: boolean
+    permissions?: string[]
 }
 
 export interface LoginResponse {

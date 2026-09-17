@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {AuthProvider} from './admin/context/AuthContext'
 import PrivateRoute from './admin/components/PrivateRoute/PrivateRoute'
-import AdminLayout from './admin/components/AdminLayout/AdminLayout'
+import AdminLayout from './admin/components/AdminLayout/AdminLayout.tsx'
 import {MenuProvider} from './shared/context/MenuContext'
 
 import Layout from './components/Layout/Layout'
