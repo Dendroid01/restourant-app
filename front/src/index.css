@@ -6,33 +6,37 @@
 @import './components/RestaurantGallery/RestaurantGallery.css';
 
 @theme {
-  --color-danger: #A93226;
+    --color-danger: #A93226;
 
-  --color-red:#C0392B;
+    --color-red: #C0392B;
+    --color-red-dark: #800020;
 
-  --color-gray-disabled: #E8E4DD;
-  --color-gray-50: #FAF8F5;
-  --color-gray-200: #8A8278;
-  --color-gray-300: #D1CBC3;
-  --color-gray-900: #1A1212;
+    --color-gray-disabled: #E8E4DD;
+    --color-gray-50: #FAF8F5;
+    --color-gray-200: #8A8278;
+    --color-gray-300: #D1CBC3;
+    --color-gray-900: #1A1212;
 
-  --color-brown-50: #5A4A42;
-  --color-brown-100: rgba(169,50,38,0.08);
-  --color-brown-200: rgba(169,50,38,0.2);
-  --color-gold: #C9A84C;
+    --color-brown-50: #5A4A42;
+    --color-brown-100: rgba(169, 50, 38, 0.08);
+    --color-brown-200: rgba(169, 50, 38, 0.2);
+    --color-gold: #C9A84C;
 
-  --color-success: #397339;
-  --color-info:    #2468AA;
+    --color-navy: rgba(36, 104, 170, 0.2);
+    --color-navy-100: rgba(36, 104, 170, 0.08);
+
+    --color-success: #397339;
+    --color-info: #2468AA;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
+    margin: 0;
+    min-height: 100vh;
 }
 
 
 #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
