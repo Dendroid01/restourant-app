@@ -2,7 +2,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useAdminReviews } from '../../hooks/useAdminReviews'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
-import StatusBadge from '../../components/StatusBadge/StatusBadge'
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx'
 
 export default function AdminReviews() {
     const {

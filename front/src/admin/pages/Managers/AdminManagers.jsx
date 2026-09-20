@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useAuth } from '../../context/AuthContext.js'
-import { useForm, RULES } from '../../../shared/hooks/useForm'
+import { useForm, RULES } from '@/shared/hooks/useForm.js'
 import FormField from '@/shared/components/FormField/FormField.js'
 import Modal from '../../components/Modal/Modal'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
-import StatusBadge from '../../components/StatusBadge/StatusBadge'
-import { adminManagers } from '../../../api/admin'
-import { fromApiToFrontend, fromFrontendToApi, mapSectionsFromApi } from '../../../utils/managerMappers'
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx'
+import { adminManagers } from '@/api/admin.js'
+import { fromApiToFrontend, fromFrontendToApi, mapSectionsFromApi } from '@/utils/managerMappers.js'
 
 // Константа для пустого состояния
 let ALL_RIGHTS = []

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import Modal from '../../components/Modal/Modal'
-import StatusBadge from '../../components/StatusBadge/StatusBadge'
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
 import { useAdminStore } from '../../hooks/useAdminStore'
 import RichTextEditor from '../../../shared/components/RichTextEditor/RichTextEditor'
-import { useToast } from '../../../shared/hooks/useToast'
+import { useToast } from '@/shared/hooks/useToast.js'
 
 const SYSTEM_PAGES = [
     { id: 'home',  title: 'Главная', slug: 'home',  status: 'published', system: true },

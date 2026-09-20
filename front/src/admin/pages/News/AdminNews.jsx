@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react'
 import {useNews} from '../../hooks/useNews'
-import {adminNews} from '../../../api/admin'
+import {adminNews} from '@/api/admin.js'
 import Modal from '../../components/Modal/Modal'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
-import StatusBadge from '../../components/StatusBadge/StatusBadge'
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx'
 import RichTextEditor from '../../../shared/components/RichTextEditor/RichTextEditor'
-import {useToast} from '../../../shared/hooks/useToast'
+import {useToast} from '@/shared/hooks/useToast.js'
 import ImageUploader from '../../components/ImageUploader/ImageUploader'
 
 const EMPTY_FORM = {

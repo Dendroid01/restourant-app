@@ -1,7 +1,7 @@
 // src/pages/Admin/Orders/AdminOrders.jsx
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
-import StatusBadge from '../../components/StatusBadge/StatusBadge';
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx';
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog';
 import { useAdminOrders } from '../../hooks/useAdminOrders';
 import OrderItemsManager from './OrderItemsManager';

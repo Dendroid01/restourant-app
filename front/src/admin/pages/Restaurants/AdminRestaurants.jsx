@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useAdminStore } from '../../hooks/useAdminStore'
 import Modal from '../../components/Modal/Modal'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
-import StatusBadge from '../../components/StatusBadge/StatusBadge'
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx'
 import MultiImageUploader from '../../components/MultiImageUploader/MultiImageUploader'
 
 const EMPTY = {

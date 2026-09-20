@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import Modal from '../../components/Modal/Modal'
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog'
-import StatusBadge from '../../components/StatusBadge/StatusBadge'
-import { adminContacts } from '../../../api/admin'
-import { useToast } from '../../../shared/hooks/useToast'
+import StatusBadge from '../../components/StatusBadge/StatusBadge.tsx'
+import { adminContacts } from '@/api/admin.js'
+import { useToast } from '@/shared/hooks/useToast.js'
 
 export default function AdminContacts() {
     const toast = useToast()

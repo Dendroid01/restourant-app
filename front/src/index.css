@@ -20,6 +20,9 @@
   --color-brown-100: rgba(169,50,38,0.08);
   --color-brown-200: rgba(169,50,38,0.2);
   --color-gold: #C9A84C;
+
+  --color-success: #397339;
+  --color-info:    #2468AA;
 }
 
 body {

@@ -15,7 +15,7 @@ import Contacts from './pages/Contacts/Contacts'
 import Booking from './pages/Booking/Booking'
 
 import Login from './admin/pages/Login/Login'
-import Dashboard from './admin/pages/Dashboard/Dashboard'
+import Dashboard from './admin/pages/Dashboard/Dashboard.tsx'
 import AdminNews from './admin/pages/News/AdminNews'
 import AdminRestaurants from './admin/pages/Restaurants/AdminRestaurants'
 import AdminMenu from './admin/pages/MenuAdmin/AdminMenu'
